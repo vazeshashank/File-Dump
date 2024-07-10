@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            background: url('{% static "images/bg.jpg" %}') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            margin: 0;
+        }
+        .cbtn{
+            width: 20rem;
+            opacity: 0.8;
+            background-color: #616161;
+        }
+        .cbtn:hover{
+            background-color: #424242 ;
+            opacity: 0.9;
+        }
+        .spc{
+            margin-top: 5%;
+        }
+        .file-path-wrapper{
+            text-align: center;
+        }
+        .drop{
+            background-color: #c6ff00;
+        }
+        .drop:hover{
+            background-color: #76ff03;
+        }
+        .black-icon {
+            color: black !important;  /* Set the color to black */
+        } 
+        .header{
+            color:  #c6ff00;
+        }
+        h1 {
+            text-shadow: -6px 0 black, 0 6px black, 6px 0 black, 0 -6px black;
+            font-family:Tahoma ;
+            color: c6ff00;
+        }
+        .file-path-wrapper input.file-path.validate{
+            color: white;
+        }
+        .choose{
+            color:#c6ff00;
+            font-size: large;
+            text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <h1 class="center-align header">File Dump</h1>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="file-field spc input-field">
+                <div class="btn cbtn ">
+                    <span class="choose">Choose File</span>
+                    <input type="file" name="file" class="white">
+                </div>
+            
+                <div class="file-path-wrapper spc ">
+                    <input class="file-path validate" type="text" placeholder="Upload your file">
+                </div>
+            </div>   
+            <div class="center-align spc upload">
+                <button type="submit" class="btn-floating pulse drop"><i class="large material-icons black-icon">arrow_downward</i></button>
+            </div>
+            
+        </form>
+    </div>
+   <div>
+    {% for m in messages %}
+    <span>m</span>
+    {% endfor %}
+   </div>
+    
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</body>
+</html> 
